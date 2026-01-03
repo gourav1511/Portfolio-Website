@@ -1,16 +1,14 @@
-// Set current year in footer
 document.addEventListener("DOMContentLoaded", () => {
+  // Footer year
   const yearSpan = document.getElementById("year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Smooth scroll for nav links
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  navLinks.forEach((link) => {
+  // Smooth scroll only for in-page anchor links
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
-      if (!targetId || !targetId.startsWith("#")) return;
+      if (!targetId || targetId === "#") return;
 
       const targetEl = document.querySelector(targetId);
       if (!targetEl) return;
